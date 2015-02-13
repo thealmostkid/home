@@ -59,6 +59,7 @@ au BufNewFile,BufRead *.mal,*.sal so $HOME/.vim/spim.vim
 au BufNewFile,BufRead *.nqc so $HOME/.vim/nqc.vim
 au BufNewFile,BufRead *.perl,*.pl,*.cgi so $HOME/.vim/perl.vim
 au BufNewFile,BufRead *.py so $HOME/.vim/python.vim
+au BufNewFile,BufRead *.sh so $HOME/.vim/sh.vim
 
 "when starting to edit a file:
 " for c & c++ files set formatting of comments and set c-indenting on.
@@ -78,6 +79,7 @@ au FileType nc so $HOME/.vim/cpp.vim
 au FileType html so $HOME/.vim/html.vim
 au FileType perl so $HOME/.vim/perl.vim
 au FileType python so $HOME/.vim/python.vim
+au FileType sh,bash so $HOME/.vim/sh.vim
 
 endif
 
