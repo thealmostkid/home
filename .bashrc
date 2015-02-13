@@ -82,3 +82,10 @@ fi
 #echo "$PROMPT_COMMAND"
 unset PROMPT_COMMAND
 export PROMPT_COMMAND="history -a"
+
+
+# set up local environment
+# do it last to override everything
+if [ -f $HOME/.bashrc_local ]; then
+        . $HOME/.bashrc_local
+fi
