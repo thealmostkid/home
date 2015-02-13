@@ -1,0 +1,15 @@
+alias cd..="cd .."
+alias ls "ls -FaG"
+alias rm "rm -i"
+alias cp "cp -i"
+alias mv "mv -i"
+#alias vi "vim"
+alias h "history"
+alias cd.. "cd .."
+alias grep "grep -n"
+alias ssh "ssh -X"
+
+alias remake 'make clean && make'
+alias svnmodified "svn status | awk '/^M|^A|^D/ { print }'"
+alias svnnew "svn status | awk '/^?/ { print }'"
+alias svnaction "svn status | awk '/^[^?]/ { print }'"
