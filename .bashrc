@@ -41,7 +41,6 @@ shopt -s histappend
 export EDITOR=vim
 export SVN_EDITOR=vim
 export CVS_RSH=ssh
-export TERM=xterm
 
 export SCRIPTNODE=natthompson@hadoopnn-009.sjc1.sendgrid.net
 
