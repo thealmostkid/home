@@ -8,7 +8,9 @@ set nocompatible
 " it super easy to install plugins and runtime files in their own private
 " directories.
 " include plugins under the ~/.vim/bundle directory
-execute pathogen#infect()
+if exists("g:loaded_pathogen")
+    execute pathogen#infect()
+endif
 syntax on
 filetype plugin indent on
 
