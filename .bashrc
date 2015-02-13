@@ -16,21 +16,23 @@ if [ -f $HOME/.bashrc_path ]; then
 	. $HOME/.bashrc_path
 fi
 
-# Put your fun stuff here.
-alias ls="ls -Fa"
-alias rm="rm -i"
-alias cp="cp -i"
-alias mv="mv -i"
-alias h="history"
+# set aliases
 alias cd..="cd .."
+alias cp="cp -i"
 alias grep="grep -n"
+alias h="history"
+alias ls="ls -FaG"
+alias mv="mv -i"
+alias remake='make clean && make'
+alias rm="rm -i"
 alias ssh="ssh -X"
+alias svnaction="svn status | awk '/^[^?]/ { print }'"
+alias svnmodified="svn status | awk '/^M|^A|^D/ { print }'"
+alias svnnew="svn status | awk '/^?/ { print }'"
 
-# load other aliases
-if [ -f $HOME/.aliases ]; then
-	. $HOME/.aliases
-fi
-
+#if [ -f $HOME/.aliases ]; then
+#    awk '{if(index($0, "#") != 1) { system("echo " $1 "=" $2);}}' $HOME/.aliases
+#fi
 
 # store history every command
 shopt -s histappend
@@ -39,6 +41,7 @@ shopt -s histappend
 export EDITOR=vim
 export SVN_EDITOR=vim
 export CVS_RSH=ssh
+export TERM=xterm
 
 export SCRIPTNODE=natthompson@hadoopnn-009.sjc1.sendgrid.net
 
