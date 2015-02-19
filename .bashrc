@@ -42,8 +42,6 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 export CVS_RSH=ssh
 
-export SCRIPTNODE=natthompson@hadoopnn-009.sjc1.sendgrid.net
-
 #
 # to ensure the correct DISPLAY variable is used.
 if [ 0 == 1 ]; then

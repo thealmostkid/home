@@ -1,6 +1,8 @@
 " determine compatibility with vi
 set nocompatible
 
+" set up searching
+set hlsearch
 " special command to clear search buffer
 :command C let @/=""
 
@@ -24,7 +26,6 @@ set autoindent
 set textwidth=80
 set backspace=1
 set term=builtin_ansi
-set nohlsearch
 set vb
 " set title " change the terminal's title
 
