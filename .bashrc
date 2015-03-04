@@ -68,18 +68,53 @@ if [ -f $HOME/.bashrc-local ]; then
 	. $HOME/.bashrc-local
 fi
 
+# command prompt
+generate_prompt () {
+. $HOME/.bash/colors.bash
 
-PS1='\[\033[01m\][\h]\w \$\[\033[00m\] '
-if ${use_color} ; then
-	if [[ ${EUID} == 0 ]]; then
-		PS1='\[\033[01;31m\][\h]\[\033[00m\]\[\033[01m\]\w \$\[\033[00m\] '
-	else
-		PS1='\[\033[01;32m\][\h]\[\033[00m\]\[\033[01m\]\w \$\[\033[00m\] '
-	fi
+if [ -f $HOME/.bash/git-ps1.bash ]; then
+    . $HOME/.bash/git-ps1.bash
 fi
+
+if [[ -n "$GIT_PROMPT_FUNCTIONS" ]]; then
+    git_prompt
+    git_status
+fi
+
+git_space=''
+if [ "X${GIT_PROMPT_STATUS}" != "X" ]; then
+    git_space=" "
+fi
+prefix="${BGreen}[\h]${Color_Off}"
+prompt=" ${White}\$${Color_Off}"
+if [[ ${EUID} == 0 ]]; then
+    prefix="${BRed}[\h]${Color_Off}"
+    prompt=" ${BRed}#${Color_Off}"
+fi
+
+directory="${directory}${BWhite}\w${Color_Off}"
+if [ "X${GIT_PROMPT_DIR}" != "X" ]; then
+    directory="${GIT_PROMPT_DIR}"
+fi
+
+virtualenv=''
+if [[ -n "$VIRTUAL_ENV" ]]
+then
+    virtualenv="${White}(`basename $VIRTUAL_ENV`)${Color_Off} "
+fi
+
+if ${use_color} ; then
+	echo -ne "${virtualenv}${prefix}${directory}${git_space}${GIT_PROMPT_STATUS}${prompt} "
+else
+    echo -ne "\[\033[01m\][\h]\w \$\[\033[00m\] "
+fi
+}
+
+export PROMPT_COMMAND='PS1="$(generate_prompt)"'
+
 #echo "$PROMPT_COMMAND"
-unset PROMPT_COMMAND
-export PROMPT_COMMAND="history -a"
+#unset PROMPT_COMMAND
+#export PROMPT_COMMAND="history -a"
 
 
 # set up local environment
