@@ -68,6 +68,7 @@ if [ -f $HOME/.bashrc-local ]; then
 	. $HOME/.bashrc-local
 fi
 
+. $HOME/.bash/git-completion.bash
 # command prompt
 generate_prompt () {
 . $HOME/.bash/colors.bash
